@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todoaqui/Busqueda.dart';
 import 'package:todoaqui/main.dart';
-import 'package:todoaqui/ShopDetail.dart';
+import 'package:todoaqui/Negocios/ShopDetail.dart';
 
 class Shop extends StatelessWidget {
   @override

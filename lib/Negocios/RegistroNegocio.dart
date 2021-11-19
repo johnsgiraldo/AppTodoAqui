@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:todoaqui/Busqueda.dart';
 import 'package:todoaqui/main.dart';
-import 'package:todoaqui/ShopList.dart';
+import 'package:todoaqui/Negocios/ShopList.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 

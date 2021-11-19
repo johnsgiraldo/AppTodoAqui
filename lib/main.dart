@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todoaqui/ShopList.dart';
+import 'package:todoaqui/Negocios/ShopList.dart';
 import 'package:todoaqui/Busqueda.dart';
-import 'package:todoaqui/RegistroNegocio.dart';
+import 'package:todoaqui/Negocios/RegistroNegocio.dart';
+import 'package:todoaqui/Usuarios/GestionUsuario.dart';
 import 'package:firebase_core/firebase_core.dart';
 // Uncomment lines 7 and 10 to view the visual layout at runtime.
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
@@ -145,6 +146,17 @@ class IndexStart extends State<Index> {
                   print('Presione el boton');
                   Navigator.push(context,
                       MaterialPageRoute(builder: (_) => Registro()));
+                },
+              )),
+          Padding(
+              padding: EdgeInsets.only(),
+              child: IconButton(
+                icon: const Icon(Icons.supervised_user_circle),
+                color: Colors.teal,
+                onPressed: () {
+                  print('Presione el boton');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => GestionUsuario()));
                 },
               )),
         ],
