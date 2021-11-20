@@ -4,6 +4,8 @@ import 'package:todoaqui/Busqueda.dart';
 import 'package:todoaqui/Negocios/RegistroNegocio.dart';
 import 'package:todoaqui/Usuarios/GestionUsuario.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:todoaqui/Busqueda/slideProductos.dart';
+import 'package:todoaqui/Busqueda/slideServicios.dart';
 // Uncomment lines 7 and 10 to view the visual layout at runtime.
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
@@ -30,6 +32,8 @@ class Index extends StatefulWidget {
 class IndexStart extends State<Index> {
   @override
   Widget build(BuildContext context) {
+
+    //***********Boton Buscar***********
     Widget searchSection = Container(
         child: Column(children: <Widget>[
       Padding(
@@ -54,6 +58,7 @@ class IndexStart extends State<Index> {
           )),
     ]));
 
+    // ********Seccion de Imagenes************
     Widget imagesSection = Container(
       color: Colors.orange[50],
       child: Column(
@@ -68,26 +73,30 @@ class IndexStart extends State<Index> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 25, top: 2, right: 25, bottom: 2),
-            child: Center(
-                child: Container(
-                    width: 400,
-                    height: 150,
-                    child: Image.asset('image/Productos.png'))),
-          ),
+              padding: EdgeInsets.only(left: 25, top: 2, right: 25, bottom: 2),
+              child: IconButton(
+                  icon: Image.asset('image/Productos.png'),
+                  iconSize: 300,
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                      builder: (_) => slideProductos()));
+                  })),
           Padding(
-            padding: EdgeInsets.only(left: 25, top: 2, right: 25, bottom: 20),
-            child: Center(
-                child: Container(
-                    width: 300,
-                    height: 150,
-                    child: Image.asset('image/Servicios.jpg'))),
-          ),
+              padding: EdgeInsets.only(left: 25, top: 2, right: 25, bottom: 2),
+              child: IconButton(
+                  icon: Image.asset('image/Servicios.jpg'),
+                  iconSize: 300,
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                            builder: (_) => slideServicios()));
+                  })),
         ],
       ),
     );
 
-    Color color = Theme.of(context).primaryColor;
+    /*Color color = Theme.of(context).primaryColor;
 
     Widget buttonSection = Container(
       child: Row(
@@ -99,8 +108,9 @@ class IndexStart extends State<Index> {
           _buildButtonColumn(color, Icons.supervised_user_circle, 'Usuario'),
         ],
       ),
-    );
+    );*/
 
+    //*********Seccion de Botones *************
     Widget botonSection = Container(
       color: Colors.teal[50],
       child: Row(
@@ -163,57 +173,7 @@ class IndexStart extends State<Index> {
       ),
     );
 
-    Widget busquedaSection = Container(
-      child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-        Padding(
-          padding: EdgeInsets.only(),
-          child: TextField(
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Busqueda',
-                hintText: 'Palabra clave de la busqueda'),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(),
-          child: ElevatedButton(
-            onPressed: () {
-              print('Presione el boton');
-            },
-            child: Text('Buscar'),
-            style: ElevatedButton.styleFrom(
-              primary: Colors.teal,
-            ),
-          ),
-        )
-      ]),
-    );
 
-    Widget ensaySection = Container(
-      color: Colors.teal[50],
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Padding(
-              padding: EdgeInsets.only(),
-              child: TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Busqueda',
-                    hintText: 'Palabra clave de la busqueda'),
-              )),
-          Padding(
-              padding: EdgeInsets.only(),
-              child: IconButton(
-                icon: const Icon(Icons.find_in_page),
-                color: Colors.teal,
-                onPressed: () {
-                  print('Presione el boton');
-                },
-              )),
-        ],
-      ),
-    );
 
     return MaterialApp(
       title: 'TodoAqui',
@@ -226,7 +186,6 @@ class IndexStart extends State<Index> {
         body: ListView(
           children: [
             searchSection,
-            //ensaySection,
             imagesSection,
             botonSection,
           ],
@@ -235,7 +194,7 @@ class IndexStart extends State<Index> {
     );
   }
 
-  Column _buildButtonColumn(Color color, IconData icon, String label) {
+  /*Column _buildButtonColumn(Color color, IconData icon, String label) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -254,5 +213,5 @@ class IndexStart extends State<Index> {
         ),
       ],
     );
-  }
+  }*/
 }
