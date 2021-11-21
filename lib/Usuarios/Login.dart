@@ -2,6 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:todoaqui/main.dart';
+import 'RegistroUsuario.dart';
+import 'package:todoaqui/Usuarios/GestionUsuario.dart';
+import 'package:todoaqui/Negocios/ShopList.dart';
+import 'package:todoaqui/Busqueda.dart';
+import 'package:todoaqui/main.dart';
+import 'package:todoaqui/Negocios/RegistroNegocio.dart';
 
 class Login extends StatefulWidget{
   @override
@@ -45,6 +51,71 @@ class LoginApp extends State<Login>{
   @override
   Widget build(BuildContext context){
 
+    //*********Seccion de Botones *************
+    Widget botonSection = Container(
+      color: Colors.teal[50],
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Padding(
+              padding: EdgeInsets.only(),
+              child: IconButton(
+                icon: const Icon(Icons.home),
+                color: Colors.teal,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => Home()));
+                  print('Presione el boton');
+                },
+              )),
+          Padding(
+              padding: EdgeInsets.only(),
+              child: IconButton(
+                icon: const Icon(Icons.find_in_page),
+                color: Colors.teal,
+                onPressed: () {
+                  print('Presione el boton');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => busqueda()));
+                },
+              )),
+          Padding(
+              padding: EdgeInsets.only(),
+              child: IconButton(
+                icon: const Icon(Icons.store),
+                color: Colors.teal,
+                onPressed: () {
+                  print('Presione el boton');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => ShopList()));
+                },
+              )),
+          Padding(
+              padding: EdgeInsets.only(),
+              child: IconButton(
+                icon: const Icon(Icons.add_business_rounded),
+                color: Colors.teal,
+                onPressed: () {
+                  print('Presione el boton');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => Registro()));
+                },
+              )),
+          Padding(
+              padding: EdgeInsets.only(),
+              child: IconButton(
+                icon: const Icon(Icons.supervised_user_circle),
+                color: Colors.teal,
+                onPressed: () {
+                  print('Presione el boton');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => GestionUsuario()));
+                },
+              )),
+        ],
+      ),
+    );
+
     return Scaffold(
       backgroundColor: Colors.orange[50],
       appBar: AppBar(
@@ -54,17 +125,17 @@ class LoginApp extends State<Login>{
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(padding: EdgeInsets.all(20),
+            Padding(padding: EdgeInsets.all(1),
             child: Center(
               child: Container(
-                width: 50,
-                height: 50,
+                width: 300,
+                height: 300,
                 child: Image.asset('image/logo.png'),
               ),
             ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 25, top: 25, right: 25, bottom: 2),
+              padding: EdgeInsets.only(left: 25, top: 5, right: 25, bottom: 2),
               child: TextField(
                 controller: correo,
                 decoration: InputDecoration(
@@ -93,19 +164,27 @@ class LoginApp extends State<Login>{
                 child: ElevatedButton(
                   onPressed: () {
                     validarDatos();
-
-                    /*registroUsers();
-                    nombre.clear();
-                    correo.clear();
-                    telefono.clear();
-                    contrasena.clear();*/
                     print('Presione el boton');
                   },
-                  child: Text('Login'),
+                  child: Text('Entrar'),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.teal,
                   ),
                 )),
+            Padding(
+                padding: EdgeInsets.only(bottom: 100),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => RegistroUsuar()));
+                    print('Presione el boton');
+                  },
+                  child: Text('Crear cuenta'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.teal,
+                  ),
+                )),
+            botonSection,
           ],
         ),
       ),

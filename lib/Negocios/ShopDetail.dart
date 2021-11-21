@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:todoaqui/Busqueda.dart';
 import 'package:todoaqui/main.dart';
 import 'package:todoaqui/Negocios/ShopList.dart';
+import 'package:todoaqui/Usuarios/GestionUsuario.dart';
+import 'package:todoaqui/Negocios/ShopList.dart';
+import 'package:todoaqui/Busqueda.dart';
+import 'package:todoaqui/main.dart';
+import 'package:todoaqui/Negocios/RegistroNegocio.dart';
 
 class Shopdetail extends StatelessWidget {
   @override
@@ -114,6 +119,7 @@ class ShopdetailListApp extends State<ShopdetailList> {
       ),
     );
 
+    //*********Seccion de Botones *************
     Widget botonSection = Container(
       color: Colors.teal[50],
       child: Row(
@@ -125,9 +131,9 @@ class ShopdetailListApp extends State<ShopdetailList> {
                 icon: const Icon(Icons.home),
                 color: Colors.teal,
                 onPressed: () {
-                  print('Presione el boton');
                   Navigator.push(context,
                       MaterialPageRoute(builder: (_) => Home()));
+                  print('Presione el boton');
                 },
               )),
           Padding(
@@ -155,10 +161,23 @@ class ShopdetailListApp extends State<ShopdetailList> {
           Padding(
               padding: EdgeInsets.only(),
               child: IconButton(
+                icon: const Icon(Icons.add_business_rounded),
+                color: Colors.teal,
+                onPressed: () {
+                  print('Presione el boton');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => Registro()));
+                },
+              )),
+          Padding(
+              padding: EdgeInsets.only(),
+              child: IconButton(
                 icon: const Icon(Icons.supervised_user_circle),
                 color: Colors.teal,
                 onPressed: () {
                   print('Presione el boton');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => GestionUsuario()));
                 },
               )),
         ],

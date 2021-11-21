@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:todoaqui/Usuarios/Login.dart';
 // Uncomment lines 7 and 10 to view the visual layout at runtime.
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
@@ -33,34 +34,47 @@ class LoadPage extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.only(top: 300),
+                padding: EdgeInsets.only(top: 250, bottom: 20),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
+                    /*Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
                       return Home();
                     }
-                    ));
+                    ));*/
 
                   },
                   child: Center(child: Image.asset('image/logo.png')),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(25),
-                child: Column(children: [
-                  ElevatedButton(onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
-                      return Home();
-                    }
-                    ));
-
-                  },
-                      child: const Text('Entrar')),
+                  padding: EdgeInsets.only(),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => Home()));
+                      print('Presione el boton');
+                    },
+                    child: Text('Entrar como Invitado'),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.teal,
+                    ),
+                  )),
+                  Padding(
+                      padding: EdgeInsets.only(),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) => Login()));
+                          print('Presione el boton');
+                        },
+                        child: Text('Login'),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.teal,
+                        ),
+                      )),
                 ]),
-              ),],
+              ),
           ),
-        ),
-      ),
-    );
+        );
   }
 }

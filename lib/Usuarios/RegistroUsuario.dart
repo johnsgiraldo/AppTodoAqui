@@ -3,6 +3,11 @@ import 'package:todoaqui/Busqueda.dart';
 import 'package:todoaqui/main.dart';
 import 'package:todoaqui/Negocios/ShopList.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:todoaqui/Usuarios/GestionUsuario.dart';
+import 'package:todoaqui/Negocios/ShopList.dart';
+import 'package:todoaqui/Busqueda.dart';
+import 'package:todoaqui/main.dart';
+import 'package:todoaqui/Negocios/RegistroNegocio.dart';
 
 
 
@@ -47,6 +52,70 @@ class RegistroUsuarioApp extends State<RegistroUsuario> {
 
   @override
   Widget build(BuildContext context) {
+    //*********Seccion de Botones *************
+    Widget botonSection = Container(
+      color: Colors.teal[50],
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Padding(
+              padding: EdgeInsets.only(),
+              child: IconButton(
+                icon: const Icon(Icons.home),
+                color: Colors.teal,
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => Home()));
+                  print('Presione el boton');
+                },
+              )),
+          Padding(
+              padding: EdgeInsets.only(),
+              child: IconButton(
+                icon: const Icon(Icons.find_in_page),
+                color: Colors.teal,
+                onPressed: () {
+                  print('Presione el boton');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => busqueda()));
+                },
+              )),
+          Padding(
+              padding: EdgeInsets.only(),
+              child: IconButton(
+                icon: const Icon(Icons.store),
+                color: Colors.teal,
+                onPressed: () {
+                  print('Presione el boton');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => ShopList()));
+                },
+              )),
+          Padding(
+              padding: EdgeInsets.only(),
+              child: IconButton(
+                icon: const Icon(Icons.add_business_rounded),
+                color: Colors.teal,
+                onPressed: () {
+                  print('Presione el boton');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => Registro()));
+                },
+              )),
+          Padding(
+              padding: EdgeInsets.only(),
+              child: IconButton(
+                icon: const Icon(Icons.supervised_user_circle),
+                color: Colors.teal,
+                onPressed: () {
+                  print('Presione el boton');
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => GestionUsuario()));
+                },
+              )),
+        ],
+      ),
+    );
 
     return Scaffold(
       backgroundColor: Colors.orange[50],
@@ -106,7 +175,7 @@ class RegistroUsuarioApp extends State<RegistroUsuario> {
               ),
             ),
             Padding(
-                padding: EdgeInsets.only(),
+                padding: EdgeInsets.only(bottom: 260),
                 child: ElevatedButton(
                   onPressed: () {
 
@@ -122,6 +191,7 @@ class RegistroUsuarioApp extends State<RegistroUsuario> {
                     primary: Colors.teal,
                   ),
                 )),
+            botonSection,
           ])),
     );
   }

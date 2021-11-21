@@ -139,7 +139,7 @@ class IndexStart extends State<Index> {
           Padding(
               padding: EdgeInsets.only(),
               child: IconButton(
-                icon: const Icon(Icons.supervised_user_circle),
+                icon: const Icon(Icons.add_business_rounded),
                 color: Colors.teal,
                 onPressed: () {
                   print('Presione el boton');
