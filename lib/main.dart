@@ -50,6 +50,8 @@ class IndexStart extends State<Index> {
           child: ElevatedButton(
             onPressed: () {
               print('Presione el boton');
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => busqueda()));
             },
             child: Text('Buscar'),
             style: ElevatedButton.styleFrom(
@@ -69,46 +71,33 @@ class IndexStart extends State<Index> {
               child: Container(
                   width: 300,
                   height: 150,
-                  child: Image.asset('image/Promo.png')),
+                  child: Image.asset('image/Promociones-1.png')),
             ),
           ),
           Padding(
-              padding: EdgeInsets.only(left: 25, top: 2, right: 25, bottom: 2),
-              child: IconButton(
-                  icon: Image.asset('image/Productos.png'),
-                  iconSize: 300,
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(
-                      builder: (_) => slideProductos()));
-                  })),
+            padding: EdgeInsets.only(left: 25, top: 2, right: 25, bottom: 2),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                MaterialPageRoute(builder: (_) => slideProductos()));
+              },
+              child: Center(child: Image.asset('image/Productos-1.png')),
+            ),
+          ),
           Padding(
-              padding: EdgeInsets.only(left: 25, top: 2, right: 25, bottom: 2),
-              child: IconButton(
-                  icon: Image.asset('image/Servicios.jpg'),
-                  iconSize: 300,
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(
-                            builder: (_) => slideServicios()));
-                  })),
+            padding: EdgeInsets.only(left: 80, top: 2, right: 80, bottom: 10),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => slideServicios()));
+              },
+              child: Center(child: Image.asset('image/Servicios-1.png')),
+            ),
+          ),
         ],
       ),
     );
 
-    /*Color color = Theme.of(context).primaryColor;
-
-    Widget buttonSection = Container(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _buildButtonColumn(color, Icons.home, 'Inicio'),
-          _buildButtonColumn(color, Icons.find_in_page, 'Buscar'),
-          _buildButtonColumn(color, Icons.add_alert, 'Alertas'),
-          _buildButtonColumn(color, Icons.supervised_user_circle, 'Usuario'),
-        ],
-      ),
-    );*/
 
     //*********Seccion de Botones *************
     Widget botonSection = Container(
@@ -193,25 +182,4 @@ class IndexStart extends State<Index> {
       ),
     );
   }
-
-  /*Column _buildButtonColumn(Color color, IconData icon, String label) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon, color: Colors.teal),
-        Container(
-          margin: const EdgeInsets.only(top: 8),
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: Colors.teal,
-            ),
-          ),
-        ),
-      ],
-    );
-  }*/
 }
