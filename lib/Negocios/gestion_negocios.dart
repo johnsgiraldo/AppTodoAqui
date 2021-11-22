@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todoaqui/RegistroNegocio.dart';
+import 'package:todoaqui/Negocios/RegistroNegocio.dart';
 
 class gestionNegocios extends StatefulWidget{
   @override

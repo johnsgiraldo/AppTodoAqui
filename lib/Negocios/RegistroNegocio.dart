@@ -41,7 +41,7 @@ class RegistroNegocioApp extends State<RegistroNegocio> {
         "Direccion":Direccion.text,
         "Telefono":Telefono.text,
         "Horario":Horario.text,
-        "Mpas":Maps.text,
+        "Maps":Maps.text,
         "Servicio": Servicio.text,
         "Tipo": Tipo.text,
         "Web":Web.text,
@@ -63,139 +63,141 @@ class RegistroNegocioApp extends State<RegistroNegocio> {
         title: Text("Creacion de Negocios"),
         backgroundColor: Colors.teal[100],
       ),
-      body: Container(
-          child: Column(children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(left: 25, top: 0.5, right: 25, bottom: 1),
-              child: TextField(
-                controller: Nombre,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                    labelText: 'Nombre del Negocio',
-                    hintText: 'Palabra clave de la busqueda'),
+       body: Container(
+            child: Column(children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 25, top: 0.5, right: 25, bottom: 1),
+                child: TextField(
+                  controller: Nombre,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      labelText: 'Nombre del Negocio',
+                      hintText: 'Palabra clave de la busqueda'),
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 25, top: 0.5, right: 25, bottom: 1),
-              child: TextField(
-                controller: Direccion,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
+              Padding(
+                padding: EdgeInsets.only(left: 25, top: 0.5, right: 25, bottom: 1),
+                child: TextField(
+                  controller: Direccion,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)
-                    ),
-                    labelText: 'Direccion',
-                    hintText: 'Palabra clave de la busqueda'),
+                      ),
+                      labelText: 'Direccion',
+                      hintText: 'Palabra clave de la busqueda'),
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 25, top: 0.5, right: 25, bottom: 1),
-              child: TextField(
-                controller: Telefono,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                    labelText: 'Telefono',
-                    hintText: 'Palabra clave de la busqueda'),
+              Padding(
+                padding: EdgeInsets.only(left: 25, top: 0.5, right: 25, bottom: 1),
+                child: TextField(
+                  controller: Telefono,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      labelText: 'Telefono',
+                      hintText: 'Palabra clave de la busqueda'),
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 25, top: 0.5, right: 25, bottom: 1),
-              child: TextField(
-                controller: Horario,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                    labelText: 'Horario del Negocio',
-                    hintText: 'Palabra clave de la busqueda'),
+              Padding(
+                padding: EdgeInsets.only(left: 25, top: 0.5, right: 25, bottom: 1),
+                child: TextField(
+                  controller: Horario,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      labelText: 'Horario del Negocio',
+                      hintText: 'Palabra clave de la busqueda'),
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 25, top: 0.5, right: 25),
-              child: TextField(
-                controller: Maps,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                    labelText: 'Maps del Negocio',
-                    hintText: 'Palabra clave de la busqueda'),
+              Padding(
+                padding: EdgeInsets.only(left: 25, top: 0.5, right: 25),
+                child: TextField(
+                  controller: Maps,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      labelText: 'Maps del Negocio',
+                      hintText: 'Palabra clave de la busqueda'),
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 25, top: 0.5, right: 25),
-              child: TextField(
-                controller: Servicio,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                    labelText: 'Servicio del Negocio',
-                    hintText: 'Palabra clave de la busqueda'),
+              Padding(
+                padding: EdgeInsets.only(left: 25, top: 0.5, right: 25),
+                child: TextField(
+                  controller: Servicio,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      labelText: 'Servicio del Negocio',
+                      hintText: 'Palabra clave de la busqueda'),
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 25, top: 0.5, right: 25),
-              child: TextField(
-                controller: Tipo,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                    labelText: 'Tipo del Negocio',
-                    hintText: 'Palabra clave de la busqueda'),
+              Padding(
+                padding: EdgeInsets.only(left: 25, top: 0.5, right: 25),
+                child: TextField(
+                  controller: Tipo,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      labelText: 'Tipo del Negocio',
+                      hintText: 'Palabra clave de la busqueda'),
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 25, top: 0.5, right: 25),
-              child: TextField(
-                controller: Web,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                    labelText: 'Web del Negocio',
-                    hintText: 'Palabra clave de la busqueda'),
+              Padding(
+                padding: EdgeInsets.only(left: 25, top: 0.5, right: 25),
+                child: TextField(
+                  controller: Web,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      labelText: 'Web del Negocio',
+                      hintText: 'Palabra clave de la busqueda'),
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 25, top: 0.5, right: 25),
-              child: TextField(
-                controller: ProductoServicio,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10)
-                    ),
-                    labelText: 'ProductoServicio del Negocio',
-                    hintText: 'Palabra clave de la busqueda'),
+              Padding(
+                padding: EdgeInsets.only(left: 25, top: 0.5, right: 25),
+                child: TextField(
+                  controller: ProductoServicio,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      labelText: 'ProductoServicio del Negocio',
+                      hintText: 'Palabra clave de la busqueda'),
+                ),
               ),
-            ),
-            Padding(
-                padding: EdgeInsets.only(),
-                child: ElevatedButton(
-                  onPressed: () {
+              Padding(
+                  padding: EdgeInsets.only(),
+                  child: ElevatedButton(
+                    onPressed: () {
 
-                    registroTienda();
-                    Nombre.clear();
-                    Direccion.clear();
-                    Telefono.clear();
-                    Horario.clear();
-                    Maps.clear();
-                    Servicio.clear();
-                    Tipo.clear();
-                    Web.clear();
-                    ProductoServicio.clear();
-                    print('Presione el boton');
-                  },
-                  child: Text('Crear Negocio'),
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.teal,
-                  ),
-                )),
-          ])),
+                      registroTienda();
+                      Nombre.clear();
+                      Direccion.clear();
+                      Telefono.clear();
+                      Horario.clear();
+                      Maps.clear();
+                      Servicio.clear();
+                      Tipo.clear();
+                      Web.clear();
+                      ProductoServicio.clear();
+                      print('Presione el boton');
+                    },
+                    child: Text('Crear Negocio'),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.teal,
+                    ),
+                  )),
+            ])),
     );
   }
 }
+
+

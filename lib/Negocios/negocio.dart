@@ -10,7 +10,6 @@ class Negocio{
   late String Telefono;
   late String Tipo;
   late String Web;
-  late String searchKey;
 
   Negocio();
 
@@ -24,7 +23,7 @@ class Negocio{
     Telefono = data['Telefono'];
     Tipo = data['Tipo'];
     Web = data['Web'];
-    searchKey = data['searchKey'];
+
   }
 
   Negocio.fromSnapshot(DocumentSnapshot snapshot){
@@ -38,7 +37,7 @@ class Negocio{
       Telefono = snapshot['Telefono'];
       Tipo = snapshot['Tipo'];
       Web = snapshot['Web'];
-      searchKey = snapshot['searchKey'];
+
 
   }
 
