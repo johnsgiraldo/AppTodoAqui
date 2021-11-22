@@ -7,6 +7,7 @@ import 'package:todoaqui/Negocios/ShopList.dart';
 import 'package:todoaqui/Busqueda.dart';
 import 'package:todoaqui/main.dart';
 import 'package:todoaqui/Negocios/RegistroNegocio.dart';
+import 'package:todoaqui/Negocios/negocio.dart';
 
 class Shop extends StatelessWidget {
   @override
