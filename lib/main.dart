@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todoaqui/Negocios/ShopList.dart';
 import 'package:todoaqui/Busqueda.dart';
 import 'package:todoaqui/Negocios/RegistroNegocio.dart';
+import 'package:todoaqui/Negocios/ShopList2.dart';
 import 'package:todoaqui/Usuarios/GestionUsuario.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:todoaqui/Busqueda/slideProductos.dart';
@@ -133,7 +134,7 @@ class IndexStart extends State<Index> {
                 onPressed: () {
                   print('Presione el boton');
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => ShopList()));
+                      MaterialPageRoute(builder: (_) => ShopList2()));
                 },
               )),
           Padding(
