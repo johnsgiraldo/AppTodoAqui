@@ -1,57 +1,75 @@
+
 import 'package:flutter/material.dart';
-import 'package:todoaqui/Busqueda.dart';
-import 'package:todoaqui/main.dart';
-import 'package:todoaqui/Negocios/ShopList.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:todoaqui/Usuarios/GestionUsuario.dart';
 import 'package:todoaqui/Negocios/ShopList.dart';
 import 'package:todoaqui/Busqueda.dart';
 import 'package:todoaqui/main.dart';
 import 'package:todoaqui/Negocios/RegistroNegocio.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-
-
-class RegistroUsuar extends StatelessWidget {
+class CambioPass extends StatefulWidget{
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: RegistroUsuario());
-  }
+  CambioPassApp createState() => CambioPassApp();
 }
 
-class RegistroUsuario extends StatefulWidget{
+class CambioPassApp extends State<CambioPass>{
   @override
-  RegistroUsuarioApp createState() => RegistroUsuarioApp();
-}
+  Widget build(BuildContext context){
+    final firebase = FirebaseFirestore.instance;
+    TextEditingController correo=TextEditingController();
+    TextEditingController pass=TextEditingController();
+    TextEditingController passNew=TextEditingController();
 
-class RegistroUsuarioApp extends State<RegistroUsuario> {
-  final firebase = FirebaseFirestore.instance;
-  TextEditingController nombre = TextEditingController();
-  TextEditingController correo = TextEditingController();
-  TextEditingController telefono = TextEditingController();
-  TextEditingController contrasena = TextEditingController();
+    validarDatos() async{
+      try{
+        CollectionReference ref=FirebaseFirestore.instance.collection("Usuarios");
+        QuerySnapshot usuario=await ref.get();
 
-  registroUsers() async{
-    try{
-      await firebase
-          .collection("Usuarios")
-          .doc()
-          .set({
-        "Nombre":nombre.text,
-        "Correo":correo.text,
-        "Telefono":telefono.text,
-        "Estado":true,
-        "Contraseña":contrasena.text,
-      });
-      mensaje("Correcto", "Registro Correcto");
+        if(usuario.docs.length !=0){
+          int flag=0;
+          for(var cursor in usuario.docs){
+            //print(cursor.get("Correo"));
+            if(cursor.get("Correo")==correo.text){
+              //print("Correo encontrado");
+              if(cursor.get("Contraseña")==pass.text){
+                print("Usuario encontrado");
+                flag=1;
+                print(cursor.id);
+
+                try{
+                  await firebase
+                      .collection("Usuarios")
+                      .doc(cursor.id)
+                      .set({
+                    "Nombre":cursor.get("Nombre"),
+                    "Correo":correo.text,
+                    "Telefono":cursor.get("Telefono"),
+                    "Estado":true,
+                    "Contraseña":passNew.text,
+                  });
+                  mensaje("Correcto", "Actualizacion Correcta");
+                }
+                catch(e){
+                  print(e);
+                  mensaje("Error", "No se logra Registrar el Usuario"+e.toString());
+                }
+
+                /*Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => Home()));*/
+              }
+            }
+          }
+          if(flag==0){
+            print("Correo NO encontrado");
+          }
+        }else{
+          print("Coleccion vacia");
+        }
+      }catch(e){
+
+      }
     }
-    catch(e){
-      print(e);
-      mensaje("Error", "No se logra Registrar el Usuario"+e.toString());
-    }
-  }
 
-  @override
-  Widget build(BuildContext context) {
     //*********Seccion de Botones *************
     Widget botonSection = Container(
       color: Colors.teal[50],
@@ -120,25 +138,23 @@ class RegistroUsuarioApp extends State<RegistroUsuario> {
     return Scaffold(
       backgroundColor: Colors.orange[50],
       appBar: AppBar(
-        title: Text("Registro de Usuarios"),
+        title: Text("Cambio Contraseña"),
         backgroundColor: Colors.teal[100],
       ),
-      body: Container(
-          child: Column(children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(left: 25, top: 25, right: 25, bottom: 2),
-              child: TextField(
-                controller: nombre,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)
-                    ),
-                    labelText: 'Nombre',
-                    hintText: 'Digite Nombre'),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(padding: EdgeInsets.all(1),
+              child: Center(
+                child: Container(
+                  width: 300,
+                  height: 300,
+                  child: Image.asset('image/logo.png'),
+                ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 25, top: 25, right: 25, bottom: 2),
+              padding: EdgeInsets.only(left: 25, top: 5, right: 25, bottom: 2),
               child: TextField(
                 controller: correo,
                 decoration: InputDecoration(
@@ -152,49 +168,52 @@ class RegistroUsuarioApp extends State<RegistroUsuario> {
             Padding(
               padding: EdgeInsets.only(left: 25, top: 25, right: 25, bottom: 2),
               child: TextField(
-                controller: telefono,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15)
-                    ),
-                    labelText: 'Telefono',
-                    hintText: 'Digite Telefono'),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 25, top: 25, right: 25, bottom: 2),
-              child: TextField(
-                controller: contrasena,
+                controller: pass,
                 obscureText: true,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(15)
                     ),
-                    labelText: 'Contraseña',
-                    hintText: 'Digite Contraseña'),
+                    labelText: 'Contraseña actual',
+                    hintText: 'Digite Contraseña actual'),
               ),
             ),
             Padding(
-                padding: EdgeInsets.only(bottom: 260),
+              padding: EdgeInsets.only(left: 25, top: 25, right: 25, bottom: 2),
+              child: TextField(
+                controller: passNew,
+                obscureText: true,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15)
+                    ),
+                    labelText: 'Contraseña Nueva',
+                    hintText: 'Digite Contraseña Nueva'),
+              ),
+            ),
+            Padding(
+                padding: EdgeInsets.only(bottom: 60),
                 child: ElevatedButton(
                   onPressed: () {
-
-                    registroUsers();
-                    nombre.clear();
-                    correo.clear();
-                    telefono.clear();
-                    contrasena.clear();
+                    validarDatos();
+                    /*correo.clear();
+                    pass.clear();
+                    passNew.clear();*/
                     print('Presione el boton');
                   },
-                  child: Text('Registrar Usuario'),
+                  child: Text('Cambiar Contraseña'),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.teal,
                   ),
                 )),
             botonSection,
-          ])),
+          ],
+        ),
+
+      ),
     );
   }
+
   void mensaje(String titulo,String mess){
     showDialog(context: context, builder: (builcontex){
       return AlertDialog(
