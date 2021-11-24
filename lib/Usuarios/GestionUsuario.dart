@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:todoaqui/Usuarios/Login.dart';
+import 'package:todoaqui/Usuarios/ModificarUser.dart';
 import 'RegistroUsuario.dart';
 import 'Login.dart';
 import 'package:todoaqui/Negocios/RegistroNegocio.dart';
@@ -10,6 +11,7 @@ import 'package:todoaqui/Busqueda.dart';
 import 'package:todoaqui/main.dart';
 import 'CambioPass.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'ModificarUser.dart';
 
 class GestionUsuario extends StatefulWidget{
   @override
@@ -183,6 +185,8 @@ class GestionUsuarioApp extends State<GestionUsuario>{
             Padding(padding: EdgeInsets.only(left: 5,top: 10,right: 20,bottom: 0),
               child: Center(
                 child: ElevatedButton(onPressed: (){
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => ModificarUser()));
                 },
                   style: ElevatedButton.styleFrom(minimumSize: Size(200, 45),primary: Colors.teal),
                   child: Text("Modificar Usuario"),
